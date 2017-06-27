@@ -12,7 +12,7 @@ class FamilyView: UIView {
 
     @IBOutlet weak var nameLabel: UILabel!
     
-    class func instanceFromNib() -> UIView {
+    func instanceFromNib() -> UIView {
         return (UINib(nibName: "FamilyView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? FamilyView)!
     }
     

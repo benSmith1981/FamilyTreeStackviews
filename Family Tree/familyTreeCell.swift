@@ -36,12 +36,22 @@ class familyTreeCell: UITableViewCell {
     
     func drawFamilyCells<family>(members: Array<family>){
         for member in members {
-//            let familyCustomView = FamilyView(frame: CGRect.init(x: 0, y: 0, width: 50, height: 50))
-            var familyCustomView = FamilyView.instanceFromNib()
+            var familyCustomView = FamilyView(frame: CGRect.init(x: 0, y: 0, width: 50, height: 50))
+            familyCustomView = familyCustomView.instanceFromNib() as! FamilyView
 
             familyCustomView.backgroundColor = UIColor.orange
             familyStackView.addArrangedSubview(familyCustomView)
-//            familyCustomView.nameLabel.text = "N"
+            if let parents = member as? Parents {
+                familyCustomView.nameLabel.text = parents.name
+                
+            } else if let children = member as? Children {
+                familyCustomView.nameLabel.text = children.name
+
+                
+            } else if let siblings = member as? Siblings {
+                familyCustomView.nameLabel.text = siblings.name
+            }
+
         }
         
         familyStackView.axis = .horizontal
