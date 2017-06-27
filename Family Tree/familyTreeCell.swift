@@ -39,16 +39,21 @@ class familyTreeCell: UITableViewCell {
             var familyCustomView = FamilyView(frame: CGRect.init(x: 0, y: 0, width: 50, height: 50))
             familyCustomView = familyCustomView.instanceFromNib() as! FamilyView
 
-            familyCustomView.backgroundColor = UIColor.orange
             familyStackView.addArrangedSubview(familyCustomView)
             if let parents = member as? Parents {
+                familyCustomView.backgroundColor = UIColor.red
+
                 familyCustomView.nameLabel.text = parents.name
                 
             } else if let children = member as? Children {
+                familyCustomView.backgroundColor = UIColor.yellow
+
                 familyCustomView.nameLabel.text = children.name
 
                 
             } else if let siblings = member as? Siblings {
+                familyCustomView.backgroundColor = UIColor.green
+
                 familyCustomView.nameLabel.text = siblings.name
             }
 
